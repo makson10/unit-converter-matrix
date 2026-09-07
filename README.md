@@ -2,7 +2,7 @@
 
 REST API that converts a value between units of the same category, built with Express 5 and TypeScript. The project doubles as a GitFlow exercise.
 
-Supported categories: temperature
+Supported categories: length, weight, temperature
 
 ## Quick start
 
