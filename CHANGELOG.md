@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-09-08
+
+### Fixed
+
+- `POST /{category}/convert` returned 500 when the request had no body, a non-JSON body or a body with missing or mistyped fields. It now validates the body and responds 400 with a descriptive error.
+
 ## [1.0.0] - 2026-09-08
 
 ### Added

@@ -52,7 +52,7 @@ import { createCategoryRouter } from '../core/category-router.js';
  *               to: mi
  *               result: 3.106856
  *       400:
- *         description: Unknown unit
+ *         description: Unknown unit or invalid request body
  *         content:
  *           application/json:
  *             schema:

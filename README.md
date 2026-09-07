@@ -27,7 +27,7 @@ Every category exposes the same two endpoints under its own prefix:
 | GET    | `/{category}/units`   | List the units of the category and its base unit                 |
 | POST   | `/{category}/convert` | Convert a value, body `{ "value": 5, "from": "km", "to": "mi" }` |
 
-Results are rounded to 6 decimal places. Errors share one shape, `{ "error": "message" }`, with 400 for an unknown unit and 404 for an unknown route.
+Results are rounded to 6 decimal places. Errors share one shape, `{ "error": "message" }`, with 400 for an unknown unit or an invalid request body and 404 for an unknown route.
 
 ## API documentation
 
