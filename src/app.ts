@@ -3,6 +3,7 @@ import express from 'express';
 import { errorHandler } from './middleware/error-handler.js';
 import { notFoundHandler } from './middleware/not-found.js';
 import { healthRouter } from './routes/health.js';
+import { temperatureRouter } from './routes/temperature.js';
 import { weightRouter } from './routes/weight.js';
 import { lengthRouter } from './routes/length.js';
 import { mountSwagger } from './swagger.js';
@@ -14,6 +15,7 @@ export function createApp() {
 
   mountSwagger(app);
   app.use(healthRouter);
+  app.use('/temperature', temperatureRouter);
   app.use('/weight', weightRouter);
   app.use('/length', lengthRouter);
 
