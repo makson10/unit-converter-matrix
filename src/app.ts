@@ -1,18 +1,15 @@
-import { readFileSync } from 'node:fs';
 import express from 'express';
 
-const { version } = JSON.parse(
-  readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
-) as { version: string };
+import { healthRouter } from './routes/health.js';
+import { mountSwagger } from './swagger.js';
 
 export function createApp() {
   const app = express();
 
   app.use(express.json());
 
-  app.get('/health', (_req, res) => {
-    res.json({ status: 'ok', version });
-  });
+  mountSwagger(app);
+  app.use(healthRouter);
 
   return app;
 }

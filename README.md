@@ -18,6 +18,10 @@ curl http://localhost:3000/health
 # {"status":"ok","version":"0.1.0"}
 ```
 
+## API documentation
+
+Swagger UI is served at [http://localhost:3000/docs](http://localhost:3000/docs) and the raw OpenAPI document at `/docs.json`. The document is generated from `@openapi` JSDoc blocks next to each route.
+
 ## Scripts
 
 | Script               | Purpose                     |
