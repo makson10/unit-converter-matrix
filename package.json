@@ -1,6 +1,6 @@
 {
   "name": "unit-converter-matrix",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "REST API that converts values between units of the same category",
   "private": true,
   "type": "module",
