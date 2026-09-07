@@ -1,5 +1,7 @@
 import express from 'express';
 
+import { errorHandler } from './middleware/error-handler.js';
+import { notFoundHandler } from './middleware/not-found.js';
 import { healthRouter } from './routes/health.js';
 import { mountSwagger } from './swagger.js';
 
@@ -10,6 +12,9 @@ export function createApp() {
 
   mountSwagger(app);
   app.use(healthRouter);
+
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   return app;
 }

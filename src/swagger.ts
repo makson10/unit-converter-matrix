@@ -18,6 +18,53 @@ export const openApiSpec = swaggerJsdoc({
       version,
       description: 'Converts a numeric value between units of the same category.',
     },
+    components: {
+      schemas: {
+        UnitList: {
+          type: 'object',
+          properties: {
+            category: { type: 'string' },
+            base: { type: 'string' },
+            units: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  symbol: { type: 'string' },
+                  name: { type: 'string' },
+                },
+              },
+            },
+          },
+        },
+        ConvertRequest: {
+          type: 'object',
+          required: ['value', 'from', 'to'],
+          properties: {
+            value: { type: 'number' },
+            from: { type: 'string' },
+            to: { type: 'string' },
+          },
+        },
+        ConvertResponse: {
+          type: 'object',
+          properties: {
+            category: { type: 'string' },
+            value: { type: 'number' },
+            from: { type: 'string' },
+            to: { type: 'string' },
+            result: { type: 'number' },
+          },
+        },
+        Error: {
+          type: 'object',
+          required: ['error'],
+          properties: {
+            error: { type: 'string' },
+          },
+        },
+      },
+    },
   },
   apis: [routeFiles],
 });
