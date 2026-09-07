@@ -19,3 +19,9 @@ export class UnknownUnitError extends HttpError {
     super(400, `Unknown unit '${symbol}' for category '${category}'`);
   }
 }
+
+export class BadRequestError extends HttpError {
+  constructor(message: string) {
+    super(400, message);
+  }
+}
