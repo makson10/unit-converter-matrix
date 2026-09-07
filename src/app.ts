@@ -1,18 +1,26 @@
-import { readFileSync } from 'node:fs';
 import express from 'express';
 
-const { version } = JSON.parse(
-  readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
-) as { version: string };
+import { errorHandler } from './middleware/error-handler.js';
+import { notFoundHandler } from './middleware/not-found.js';
+import { healthRouter } from './routes/health.js';
+import { temperatureRouter } from './routes/temperature.js';
+import { weightRouter } from './routes/weight.js';
+import { lengthRouter } from './routes/length.js';
+import { mountSwagger } from './swagger.js';
 
 export function createApp() {
   const app = express();
 
   app.use(express.json());
 
-  app.get('/health', (_req, res) => {
-    res.json({ status: 'ok', version });
-  });
+  mountSwagger(app);
+  app.use(healthRouter);
+  app.use('/temperature', temperatureRouter);
+  app.use('/weight', weightRouter);
+  app.use('/length', lengthRouter);
+
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   return app;
 }
